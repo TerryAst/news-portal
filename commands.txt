@@ -1,0 +1,43 @@
+user1 = User.objects.create_user(username = 'Иванов Иван Иванович')
+user2 = User.objects.create_user(username = 'Сергеев Игорь Сергеевич')
+author1 = Author.objects.create(user = 'Иванов Иван Иванович')
+author2 = Author.objects.create(user = 'Сергеев Игорь Сергеевич')
+Category.objects.create(category_name = 'Мировые новости')
+Category.objects.create(category_name = 'Религия')
+Category.objects.create(category_name = 'Рыбалка')
+Category.objects.create(category_name = 'Автомобили')
+post1 = Post.objects.create(author_post = 'Иванов Иван Иванович', 
+                    type = 'article', 
+                    category_of_post = ['Мировые новости', 'Религия'],
+                    header = 'Собор Украинской православной церкви объявил о ее полной независимости',
+                    text = 'Москва. 27 мая. INTERFAX.RU - Собор Украинской православной церкви, прошедший в пятницу в Киеве, выразил несогласие с позицией патриарха Кирилла по поводу конфликта на Украине и принял изменения в устав УПЦ, которые означают ее полную самостоятельность.'
+                    )
+post2 = Post.objects.create(author_post = 'Иванов Иван Иванович', 
+                    type = 'article', 
+                    category_of_post = ['Мировые новости', 'Религия'],
+                    header = '«Макдоналдс» представил варианты нового названия в России',
+                    text = 'В процессе смены названия «Макдоналдс» в России рассматриваются четыре варианта, соответствующие заявки поданы в Роспатент. Об этом со ссылкой на пресс-службу компании сообщает РБК. Представитель сети ресторанов объяснил, что ведется работа по созданию нового бренда и окончательного решения пока нет.'
+                    )
+post3 = Post.objects.create(author_post = 'Сергеев Игорь Сергеевич', 
+                    type = 'news', 
+                    category_of_post = ['Автомобили'],
+                    header = 'Упрощенная LADA Granta без подушек безопасности названа опасным автомобилем',
+                    text = 'Председатель движения автомобилистов Виктор Похмелкин назвал упрощенную модель Lada Granta очень опасным автомобилем. Свое мнение он высказал эфире радиостанции «Говорит Москва». Производство в наше время автомобилей без подушек безопасности — это регресс и возврат на десятилетия назад. Виктор Похмелкин подчеркнул, что производство автомобилей без подушек безопасности и без системы ABS запускать нельзя. '
+                    )
+Comment.objects.create(comment_of_post = post3, comment_of_user = 'Иванов Иван Иванович', 
+    text_comment = 'Председатель движения автомобилистов Виктор Похмелкин назвал упрощенную модель Lada Granta')
+Comment.objects.create(comment_of_post = post2, comment_of_user = 'Иванов Иван Иванович', 
+    text_comment = 'Председатель движения автомобилистов Виктор Похмелкин назвал упрощенную модель Lada Granta')
+Comment.objects.create(comment_of_post = post1, comment_of_user = 'Иванов Иван Иванович', 
+    text_comment = 'Председатель движения автомобилистов Виктор Похмелкин назвал упрощенную модель Lada Granta')
+Comment.objects.create(comment_of_post = post2, comment_of_user = 'Иванов Иван Иванович', 
+    text_comment = 'Председатель движения автомобилистов Виктор Похмелкин назвал упрощенную модель Lada Granta')
+post2.like()
+post2.like()
+post1.like()
+post2.dislike()
+author1.update_rating()
+
+
+
+
